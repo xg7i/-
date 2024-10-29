@@ -3,38 +3,81 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>زر يظهر كلمة مصطفى</title>
+    <title>آلة حاسبة لقوانين نيوتن</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 100px;
-            background-color: #f4f4f4;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
         }
-        #myButton {
-            padding: 20px 40px;
-            font-size: 24px;
+        h1 {
+            color: #007BFF;
+        }
+        .calculator {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            background-color: #007BFF;
             color: white;
-            background-color: red;
             border: none;
             border-radius: 5px;
             cursor: pointer;
         }
-        #myText {
-            display: none;
-            font-size: 48px;
-            color: blue;
+        #result {
             margin-top: 20px;
+            font-size: 18px;
+            color: green;
         }
     </style>
     <script>
-        function showText() {
-            document.getElementById('myText').style.display = 'block';
+        function calculate() {
+            const mass = parseFloat(document.getElementById('mass').value);
+            const acceleration = parseFloat(document.getElementById('acceleration').value);
+            let result = '';
+
+            if (!isNaN(mass) && !isNaN(acceleration)) {
+                const force = mass * acceleration;
+                result = القوة (F) = ${force} نيوتن;
+            } else if (!isNaN(mass)) {
+                const calculatedAcceleration = 10; // فرضية تسارع ثابت (يمكن تغييره)
+                result = يجب إدخال تسارع. (مثلاً، إذا كان التسارع = ${calculatedAcceleration} م/ث²، القوة = ${mass * calculatedAcceleration} نيوتن);
+            } else if (!isNaN(acceleration)) {
+                const calculatedMass = 10; // فرضية كتلة ثابتة (يمكن تغييره)
+                result = يجب إدخال الكتلة. (مثلاً، إذا كانت الكتلة = ${calculatedMass} كجم، القوة = ${calculatedMass * acceleration} نيوتن);
+            } else {
+                result = 'يرجى إدخال القيم.';
+            }
+
+            document.getElementById('result').innerText = result;
         }
     </script>
 </head>
 <body>
-    <button id="myButton" onclick="showText()">اضغط هنا</button>
-    <div id="myText">مصطفى</div>
+    <h1>آلة حاسبة لقوانين نيوتن</h1>
+    <div class="calculator">
+        <label for="mass">الكتلة (kg):</label>
+        <input type="number" id="mass" placeholder="أدخل الكتلة">
+        
+        <label for="acceleration">التسارع (m/s²):</label>
+        <input type="number" id="acceleration" placeholder="أدخل التسارع">
+        
+        <button onclick="calculate()">احسب القوة</button>
+        
+        <div id="result"></div>
+    </div>
 </body>
 </html>
