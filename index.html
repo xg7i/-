@@ -3,81 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>آلة حاسبة لقوانين نيوتن</title>
+    <title>حل معادلات نيوتن الخطية</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f9f9f9;
-            color: #333;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
         }
         h1 {
-            color: #007BFF;
+            color: #333;
         }
-        .calculator {
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-            max-width: 400px;
-            margin: auto;
-        }
-        input {
-            width: calc(100% - 20px);
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            padding: 10px;
-            background-color: #007BFF;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
+        #equationInput {
+            margin-bottom: 20px;
         }
         #result {
             margin-top: 20px;
-            font-size: 18px;
-            color: green;
+            font-weight: bold;
         }
     </style>
-    <script>
-        function calculate() {
-            const mass = parseFloat(document.getElementById('mass').value);
-            const acceleration = parseFloat(document.getElementById('acceleration').value);
-            let result = '';
-
-            if (!isNaN(mass) && !isNaN(acceleration)) {
-                const force = mass * acceleration;
-                result = القوة (F) = ${force} نيوتن;
-            } else if (!isNaN(mass)) {
-                const calculatedAcceleration = 10; // فرضية تسارع ثابت (يمكن تغييره)
-                result = يجب إدخال تسارع. (مثلاً، إذا كان التسارع = ${calculatedAcceleration} م/ث²، القوة = ${mass * calculatedAcceleration} نيوتن);
-            } else if (!isNaN(acceleration)) {
-                const calculatedMass = 10; // فرضية كتلة ثابتة (يمكن تغييره)
-                result = يجب إدخال الكتلة. (مثلاً، إذا كانت الكتلة = ${calculatedMass} كجم، القوة = ${calculatedMass * acceleration} نيوتن);
-            } else {
-                result = 'يرجى إدخال القيم.';
-            }
-
-            document.getElementById('result').innerText = result;
-        }
-    </script>
 </head>
 <body>
-    <h1>آلة حاسبة لقوانين نيوتن</h1>
-    <div class="calculator">
-        <label for="mass">الكتلة (kg):</label>
-        <input type="number" id="mass" placeholder="أدخل الكتلة">
-        
-        <label for="acceleration">التسارع (m/s²):</label>
-        <input type="number" id="acceleration" placeholder="أدخل التسارع">
-        
-        <button onclick="calculate()">احسب القوة</button>
-        
-        <div id="result"></div>
+    <h1>حل معادلات نيوتن الخطية</h1>
+    <div id="equationInput">
+        <label for="equation">أدخل المعادلة (مثال: x^2 - 2 = 0):</label><br>
+        <input type="text" id="equation" placeholder="اكتب المعادلة هنا">
+        <button onclick="solveEquation()">حل</button>
     </div>
+    <div id="result"></div>
+    <footer>
+        <p>حقوق الطبع والنشر &copy; 2023 [مصطفى]. جميع الحقوق محفوظة.</p>
+        <p>Nova Mod</p>
+    </footer>
+
+    <script>
+        function solveEquation() {
+            const equation = document.getElementById('equation').value;
+            // هنا يمكنك إضافة منطق لحل المعادلة
+            // كمثال بسيط، سأقوم بعرض المعادلة المدخلة فقط
+            document.getElementById('result').innerText = 'نتيجة المعادلة: ' + equation;
+        }
+    </script>
 </body>
 </html>
